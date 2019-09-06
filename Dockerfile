@@ -30,32 +30,16 @@ RUN yum install -y yum-utils && \
 
 RUN yum update -y \
   && yum install -y \
-  autoconf \
-  automake \
-  boost-test \
-  blas \
-  blas-devel \
-  cmake \
-  cppcheck \
   createrepo \
-  doxygen \
   e2fsprogs-devel \
-  gcc \
-  gcc-c++ \
   git \
   gtk3 \
   ImageMagick \
-  ImageMagick-devel \
-  lapack \
-  lapack-devel \
   libclang \
   libgtk-vnc-2.0-0 \
   libtool \
   libXtst \
   mailx \
-  make \
-  makeinfo \
-  mariadb-libs \
   metacity \
   mutter \
   net-snmp-devel.x86_64 \
@@ -69,25 +53,19 @@ RUN yum update -y \
   python36u\
   rpm-build \
   strace \
-  subversion \
   sysstat \
   tcl \
   tcpdump \
   tcsh \
   telnet \
-  texlive \
-  texlive-latex \
-  texlive-tex4ht \
   tigervnc \
   tigervnc-server \
   tk \
   unrar \
   unzip \
-  vino \
   webkitgtk \
   webkitgtk3 \
   wget \
-  xmlstarlet \
   xorg-x11-apps.x86_64 \
   xorg-x11-drv-dummy.x86_64 \
   xorg-x11-drv-evdev.x86_64 \
@@ -100,7 +78,6 @@ RUN yum update -y \
   xorg-x11-server-Xvfb.x86_64 \
   xterm \
   zip \
-  zsh \
   && yum clean all
 
 RUN ln -s /usr/bin/git /usr/local/bin/git \
@@ -126,9 +103,9 @@ ENV JAVA_OPTS=""
 ENV JNLP_PROTOCOL_OPTS="-XshowSettings:vm -Xmx256m -Dsun.zip.disableMemoryMapping=true -Dorg.jenkinsci.remoting.engine.JnlpProtocol3.disabled=true -Dorg.jenkinsci.plugins.gitclient.CliGitAPIImpl.useSETSID=true"
 
 ENV JAVA_TOOL_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+UseContainerSupport -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
-ENV OPENJ9_JAVA_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+UseContainerSupport -XX:+IdleTuningCompactOnIdle -XX:+IdleTuningGcOnIdle -XX:MaxRAMPercentage=64"
-ENV IBM_JAVA_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+UseContainerSupport -XX:+IdleTuningCompactOnIdle -XX:+IdleTuningGcOnIdle -XX:MaxRAMPercentage=64"
-ENV _JAVA_OPTIONS="-XX:MaxRAMPercentage=64.0"
+ENV OPENJ9_JAVA_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+UseContainerSupport -XX:+IdleTuningCompactOnIdle -XX:+IdleTuningGcOnIdle -XX:MaxRAMPercentage=50"
+ENV IBM_JAVA_OPTIONS="-XX:+IgnoreUnrecognizedVMOptions -XX:+UseContainerSupport -XX:+IdleTuningCompactOnIdle -XX:+IdleTuningGcOnIdle -XX:MaxRAMPercentage=50"
+ENV _JAVA_OPTIONS="-XX:MaxRAMPercentage=50.0"
 
 WORKDIR /home/jenkins
 
