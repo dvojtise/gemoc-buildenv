@@ -94,6 +94,10 @@ RUN mkdir -p ${HOME}/.vnc && chmod -R 775 ${HOME} \
 COPY scripts/xstartup_mutter.sh ${HOME}/.vnc/xstartup.sh
 RUN chmod 755 ${HOME}/.vnc/xstartup.sh
 
+# avoid "library appears to be incorrectly set up; failed to read machine uuid: UUID file '/etc/machine-id' should contain a hex string of length 32" when launching x 
+# cf http://www.torkwrench.com/2011/12/16/d-bus-library-appears-to-be-incorrectly-set-up-failed-to-read-machine-uuid-failed-to-open-varlibdbusmachine-id/ and https://github.com/activatedgeek/docker-videostack/issues/1
+RUN dbus-uuidgen > /var/lib/dbus/machine-id
+
 # explicitly set locale
 ENV LANG=en_US.UTF-8
 
